@@ -26,6 +26,10 @@ Before you begin, ensure you have the following installed:
     ```bash
      $ npm i mysql2  
     ```
+3. [EJS](https://www.npmjs.com/package/ejs) (For Templating)
+    ```bash
+     $ npm i ejs 
+    ```
 
 ## Installation
 
@@ -65,13 +69,13 @@ Before you begin, ensure you have the following installed:
 
 ## API Endpoints
 
-| Method | Endpoint       | Description              |
-|--------|----------------|--------------------------|
-| GET    | `/api/items`   | Retrieve all items       |
-| GET    | `/api/items/:id` | Retrieve a single item by ID |
-| POST   | `/api/items`   | Create a new item        |
-| PUT    | `/api/items/:id` | Update an item by ID     |
-| DELETE | `/api/items/:id` | Delete an item by ID     |
+| Method | Endpoint           | Description                        |
+|--------|--------------------|------------------------------------|
+| GET    | `/`                | Show number of users in Database   |
+| GET    | `/users`           | Show users (email, id, username)   |
+| POST   | `/users`           | Create a new user                  |
+| PATCH  | `/users/:id`       | Update username by ID              |
+| DELETE | `/users/:id`       | Delete an user by ID               |
 
 ### Example Requests
 
