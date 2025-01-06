@@ -8,20 +8,53 @@
         table, tr, th, td{
             border: 1px solid black;
         }
+        .dlt{
+            background: #F32013;
+            box-shadow: 0 8px 6px -6px #555;
+            transition: all .4s ease;
+            color: white; 
+        }
+        .edit,
+        .add{
+            background: #2f4ad0;
+            box-shadow: 0 8px 6px -6px #555;
+            transition: all .4s ease;
+            color: white;
+        }
+        button:hover{
+            letter-spacing: 2px;
+            }
     </style>
 </head>
 <body>
+    <form method="GET" action="/user/new">
+        <button class="add">Add New User</button>
+      </form>
+  
+      <h2>List of all users</h2>
+      <table>
     <table>
         <tr>
             <th>ID</th>
             <th>USER NAME</th>
             <th>EMAIL</th>
+            <th colspan="2">Action</th>
         </tr>
         <% for(user of users) { %>
             <tr>
                 <td><%= user.id %></td>
                 <td><%= user.username %></td>
                 <td><%= user.email %></td>
+                <td>
+                    <form method="GET" action="/user/<%=user.id%>/edit">
+                        <button class="edit">EDIT</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="">
+                        <button class="dlt">DELETE</button>
+                    </form>
+                </td>
             </tr>
         <%}%>
     </table>
