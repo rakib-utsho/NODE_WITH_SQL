@@ -8,7 +8,7 @@ const path = require("path");
 let port = 8080;
 
 app.set("view engine", "ejs");
-app.use("views", path.join(__dirname, "/views"));
+app.set("views", path.join(__dirname, "/views"));
 
 // Create the connection to database
 const connection = mysql.createConnection({
@@ -28,20 +28,35 @@ let getRandomUser = () => {
   ];
 };
 
-
+// Home Route
 app.get("/", (req, res)=> {
   let q = `SELECT count(*) FROM user`;
   try{
     connection.query(q, (err, result) => {
             if(err) throw err;
-            console.log(result[0]["count(*)"]);
-            res.send("Success");
+            let count = (result[0]["count(*)"]);
+            res.render("home.ejs", {count});
         });
   }catch(err){
     console.log(err);
-    res.send("Some Error in Database")
+    res.send("Some Error in Database");
   }
-})
+});
+
+// Show Route
+app.get("/user", (req, res)=>{
+  let q = `SELECT * FROM user`;
+  try{
+    connection.query(q, (err, result) => {
+            if(err) throw err;
+            console.log(result);
+            res.render("home.ejs", {count});
+        });
+  }catch(err){
+    console.log(err);
+    res.send("Some Error in Database");
+  }
+});
 
 app.listen(port, ()=>{
   console.log(`server is listening to port ${port}`);
