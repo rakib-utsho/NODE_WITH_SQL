@@ -11,15 +11,26 @@ const connection = mysql.createConnection({
     password: 'DB@104#-ac!',
   });
 
+  // FAKER PACKAGE FOR GENERATE FAKE USER INFO
+let getRandomUser = () => {
+  return [
+    faker.string.uuid(),
+    faker.internet.username(), // before version 9.1.0, use userName()
+    faker.internet.email(),
+    faker.internet.password(),
+  ];
+};
+
   // Inserting new data
   let q = "INSERT INTO user (id, username, email, password) VALUES ?";
-  let users = [
-    ["123b", "123_newuserb", "abc@gmail.comb", "abcb"],
-    ["123c", "123_newuserc", "abc@gmail.comc", "abcc"],
-  ]; 
+  
+  let data = [];
+  for(let i = 1; i<=100; i++) {
+    data.push(getRandomUser()); // 100 fake user data
+  }
 
   try{
-    connection.query(q, [users], (err, result) => {
+    connection.query(q, [data], (err, result) => {
             if(err) throw err;
             console.log(result);
         });
@@ -28,12 +39,4 @@ const connection = mysql.createConnection({
   }
   connection.end();
 
-// FAKER PACKAGE FOR GENERATE FAKE USER INFO
-let getRandomUser = () => {
-    return {
-      id: faker.string.uuid(),
-      username: faker.internet.username(), // before version 9.1.0, use userName()
-      email: faker.internet.email(),
-      password: faker.internet.password(),
-    };
-  }
+
