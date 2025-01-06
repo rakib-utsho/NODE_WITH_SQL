@@ -56,7 +56,7 @@ Before you begin, ensure you have the following installed:
    ```bash
    npm index.js
    ```
-## Connect to MySQL through VS CODE CLI - Windows 10
+## Using SQL From VS CODE CLI - Windows 10
     - Open Terminal on VS Code
     - Write the commands-
        $ cd "C:\Program Files\MySQL\MySQL Server 8.0"

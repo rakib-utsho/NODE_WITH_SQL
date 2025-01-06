@@ -16,11 +16,13 @@ const connection = mysql.createConnection({
         (err, result) => {
             if(err) throw err;
             console.log(result);
+            console.log(result.length);
         }
     )
   }catch(err){
     console.log(err);
   }
+  connection.end();
 
 // FAKER PACKAGE FOR GENERATE FAKE USER INFO
 let getRandomUser = () => {
